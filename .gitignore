@@ -1,0 +1,8 @@
+*.pyc
+*~
+__pycache__
+appvenv
+db.sqlite3
+shopapp/static/images
+/media
+.DS_Store

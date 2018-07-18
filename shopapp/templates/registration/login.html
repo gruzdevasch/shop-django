@@ -1,0 +1,247 @@
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../../static/images/icon/favicon.png" type="image/x-icon">
+
+    <!-- Web Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico%7CSource+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;amp;subset=latin-ext,vietnamese" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="../../static/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/animate/animated.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/owl.carousel.min/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/jquery.mmenu.all/jquery.mmenu.all.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/direction/css/noJS.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/prettyphoto-master/css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/slick-sider/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/libs/countdown-timer/css/demo.css">
+
+    <!-- Template CSS-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/home.css">
+
+  </head>
+  <body class="product my-account">
+    <div id="preloaderKDZ"></div>
+    <div class="yolo-site">
+      <header class="header yolo-header-style-10">
+        <div class="yolo-top-bar">
+          <div class="container">
+            <div class="row">
+              <div class="top-sidebar top-bar-left col-md-4">
+                <aside id="text-11" class="widget widget_text">
+                  <div class="textwidget">
+                    <div>Добро пожаловать!</div>
+                  </div>
+                </aside>
+              </div>
+              <div class="top-sidebar top-bar-right col-md-8">
+                <aside id="text-6" class="widget widget_text">
+                  <div class="textwidget"><i class="fa fa-home"></i> Свободный 69, Красноярск <i style="margin-left: 15px" class="fa fa-phone"></i> + 7 (111) 111 11 11<i style="margin-left: 15px" class="fa fa-clock-o"></i> Пн-Пт: 9.00 - 20.00</div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu">
+          <div class="col-3 text-left"><a href="#primary-menu"><i class="fa fa-bars"></i></a></div>
+          <div class="col-3 text-center">
+            <div class="logo">
+              <h1><a href="{% url 'main_page' %}"><img src="../../static/images/logo/logo.png" alt="logo"/></a></h1>
+            </div>
+          </div>
+          <div class="col-3 text-right">
+            <div class="header-right">
+              <div class="search-button-wrapper header-customize-item style-default">
+                <div class="icon-search-menu"><i class="wicon fa fa-search"></i></div>
+                <div class="yolo-search-wrapper">
+                  <input id="search-ajax" placeholder="Enter keyword to search" type="search"/>
+                  <button class="search"><i class="fa fa-search"></i></button>
+                  <button class="close"><i class="pe-7s-close"></i></button>
+                </div>
+              </div>
+              <div class="shopping-cart-wrapper header-customize-item with-price">
+                <div class="widget_shopping_cart_content">
+                  <div class="widget_shopping_cart_icon"><i class="wicon fa fa-shopping-bag"></i><span class="total">0</span></div>
+                  <div class="cart_list_wrapper">
+                    <div class="scroll-wrapper cart_list product_list_widget scrollbar-inner">
+                      <ul class="cart_list product_list_widget scrollbar-inner scroll-content">
+                        <li class="empty">
+                          <h4>Ваша корзина пуста</h4>
+                          <p>Для добавления товаров перейдите в каталог.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-logo">
+          <h1><a href="{% url 'main_page' %}"><img src="../../static/images/logo/logo.png" alt="logo"/></a></h1>
+        </div>
+        <div class="header-bottom">
+          <div class="container">
+
+            <div class="main-nav-wrapper">
+              <div class="header-left">
+                <nav id="primary-menu" class="main-nav">
+                  <ul class="nav">
+                    <li class="header-logo">
+                      <h1><a href="{% url 'main_page' %}"><img src="../../static/images/logo/logo.png" alt="logo"/></a></h1>
+                    </li>
+                    <li class="active menu-item menu-home"><a href="{% url 'main_page' %}">Главная</a>
+
+                    </li>
+                    <li class="menu-item menu-shop"><a href="{% url 'product_shop' %}">Магазин</a>
+                      <ul class="sub-menu">
+                        <li class="menu_style_dropdown menu-item"><a href="product-shop.html">Меню</a>
+                          <ul class="sub-menu">
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'product_shop' %}">Список товаров</a></li>
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'product_cart' %}">Корзина</a></li>
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'my_account' %}">Мой профиль</a></li>
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'product_wishlist' %}">Список желаний</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="menu-item menu-blog"><a href="{% url 'about_us' %}">О нас</a>
+                    </li>
+                    <li class="menu-item menu-blog"><a href="{% url 'contact_us' %}">Контакты</a>
+                    </li>
+
+                  </ul>
+                </nav>
+                <!-- .header-main-nav-->
+              </div>
+
+              <div class="header-right">
+                <ul class="header-customize-item header-social-profile-wrapper">
+                  <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-skype"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <nav class="yolo-canvas-menu-wrapper dark ps-container"><a href="#" class="yolo-canvas-menu-close"><i class="fa fa-close"></i></a>
+          <div class="yolo-canvas-menu-inner sidebar">
+            <aside id="text-12" class="widget widget_text">
+              <div class="textwidget">
+                <div class="begreen-widget ad-spot text-center">
+                  <div class="about-image"><img src="../static/images/demo/off-menu.png" alt="demo"/></div>
+                  <h2 class="name_author">Be Green</h2>
+                  <div class="about-description text-center">I love life and the unique position of being a working artist. I love the thrill of the hunt and am an avid vintage hound, sniffing out the best one-of-a-kinds.</div>
+                </div>
+              </div>
+            </aside>
+            <aside id="text-13" class="widget widget_text">
+              <div class="textwidget"><a href="#"><img src="../static/images/demo/bn-bs.jpg" alt="demo"/></a></div>
+            </aside>
+            <aside id="yolo-social-profile-6" class="widget widget-social-profile">
+              <ul class="social-profile social-icon-bordered">
+                <li><a title="Facebook" href="#" target="_blank"><i class="fa fa-facebook"></i>Facebook</a></li>
+                <li><a title="Twitter" href="#" target="_blank"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a title="Skype" href="#" target="_blank"><i class="fa fa-skype"></i>Skype</a></li>
+                <li><a title="Youtube" href="#" target="_blank"><i class="fa fa-youtube"></i>Youtube</a></li>
+              </ul>
+            </aside>
+          </div>
+        </nav>
+      </header>
+      <div id="example-wrapper">
+        <div class="div-box">
+
+        </div>
+        <div class="div-box mb mt">
+          <div class="container">
+            <div class="customer_login_form_wrap">
+              <h2>Войти</h2>
+              <p class="mb-20">Войдите по свои аккаунтом</p>
+              <form method="post" class="login"  action="{% url 'login' %}">
+                    {% csrf_token %}
+                <p class="form-row form-row-wide">
+                  <label for="username" class="mb-20">Имя пользователя или email <span class="required">*</span></label>
+                  <input id="username" name="username" value="" type="text" class="product-begreen-input product-begreen-input-text input-text"/>
+                </p>
+                <p class="form-row form-row-wide">
+                  <label for="password" class="mb-20 mt-20">Пароль <span class="required">*</span></label>
+                  <input id="password" name="password" type="password" class="product-begreen-input product-begreen-input-text input-text"/>
+                </p>
+                <p class="form-row mt-20 mb-20">
+                  <input name="login" value="Войти" type="submit" class="button"/>
+                  <label for="rememberme" class="inline">
+                    <input id="rememberme" name="rememberme" value="forever" type="checkbox" checked="true" class="product-begreen-input product-begreen-input-checkbox"/> Запомнить
+                  </label>
+                </p>
+                <p class="product-begreen-lostpassword lost_password"><a href="{% url 'signup' %}">Регистрация</a></p>
+                <p class="product-begreen-lostpassword lost_password"><a href="#">Забыли пароль?</a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="div-box">
+          <footer id="yolo-footer-wrapper">
+            <div class="yolo-footer-wrapper footer-3">
+              <div class="footer-col">
+                <h2><a href="{% url 'main_page' %}" class="logo"><img src="./static/images/logo/logo-footer.png" alt="logo1" width="84" height="63" class="vc_single_image-img attachment-full"/></a></h2>
+                <ul id="social-footer">
+                  <li><a href="#" target="_blank"><i class="fa fa-skype"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+      </div>
+    </div>
+    <!-- .mv-site-->
+
+
+
+    <div class="popup-wrapper">
+    </div>
+    <!-- .popup-wrapper-->
+    <div class="click-back-top-body">
+      <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
+    </div>
+
+    <!-- Vendor jQuery-->
+    <script type="text/javascript" src="../../static/libs/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/animate/wow.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/jquery.mmenu.all/jquery.mmenu.all.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/countdown/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/jquery-appear/jquery.appear.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/jquery-countto/jquery.countTo.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/direction/js/jquery.hoverdir.js"></script>
+    <script type="text/javascript" src="../../static/libs/direction/js/modernizr.custom.97074.js"></script>
+    <script type="text/javascript" src="../../static/libs/isotope/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/isotope/fit-columns.js"></script>
+    <script type="text/javascript" src="../../static/libs/isotope/isotope-docs.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/mansory/mansory.js"></script>
+    <script type="text/javascript" src="../../static/libs/prettyphoto-master/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="../../static/libs/slick-sider/slick.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/countdown-timer/js/jquery.final-countdown.min.js"></script>
+    <script type="text/javascript" src="../../static/libs/countdown-timer/js/kinetic.js"></script>
+    <script type="text/javascript" src="../../static/libs/owl.carousel.min/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="../../static/js/main.js"></script>
+  </body>
+</html>

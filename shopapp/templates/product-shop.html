@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Магазин</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../static/images/icon/favicon.png" type="image/x-icon">
+
+    <!-- Web Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico%7CSource+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;amp;subset=latin-ext,vietnamese" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="../static/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/animate/animated.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/owl.carousel.min/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/jquery.mmenu.all/jquery.mmenu.all.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/direction/css/noJS.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/prettyphoto-master/css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/slick-sider/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/libs/countdown-timer/css/demo.css">
+
+    <!-- Template CSS-->
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css">
+
+  </head>
+  <body class="products shop">
+    <div id="preloaderKDZ"></div>
+    <div class="yolo-site">
+      <header class="header yolo-header-style-10">
+        <div class="yolo-top-bar">
+          <div class="container">
+            <div class="row">
+              <div class="top-sidebar top-bar-left col-md-4">
+                <aside id="text-11" class="widget widget_text">
+                  <div class="textwidget">
+                    <div>Добро пожаловать!</div>
+                  </div>
+                </aside>
+              </div>
+              <div class="top-sidebar top-bar-right col-md-8">
+                <aside id="text-6" class="widget widget_text">
+                  <div class="textwidget"><i class="fa fa-home"></i> Свободный 69, Красноярск <i style="margin-left: 15px" class="fa fa-phone"></i> + 7 (111) 111 11 11<i style="margin-left: 15px" class="fa fa-clock-o"></i> Пн-Пт: 9.00 - 20.00</div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu">
+          <div class="col-3 text-left"><a href="#primary-menu"><i class="fa fa-bars"></i></a></div>
+          <div class="col-3 text-center">
+            <div class="logo">
+              <h1><a href="index.html"><img src="../static/images/logo/logo.png" alt="logo"/></a></h1>
+            </div>
+          </div>
+          <div class="col-3 text-right">
+            <div class="header-right">
+              <div class="search-button-wrapper header-customize-item style-default">
+                <div class="icon-search-menu"><i class="wicon fa fa-search"></i></div>
+                <div class="yolo-search-wrapper">
+                  <input id="search-ajax" placeholder="Enter keyword to search" type="search"/>
+                  <button class="search"><i class="fa fa-search"></i></button>
+                  <button class="close"><i class="pe-7s-close"></i></button>
+                </div>
+              </div>
+              <div class="shopping-cart-wrapper header-customize-item with-price">
+                <div class="widget_shopping_cart_content">
+                  <div class="widget_shopping_cart_icon"><i class="wicon fa fa-shopping-bag"></i><span class="total">0</span></div>
+                  <div class="cart_list_wrapper">
+                    <div class="scroll-wrapper cart_list product_list_widget scrollbar-inner">
+                      <ul class="cart_list product_list_widget scrollbar-inner scroll-content">
+                        <li class="empty">
+                          <h4>Ваша корзина пуста</h4>
+                          <p>Для добавления товаров перейдите в каталог.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-logo">
+          <h1><a href="{% url 'main_page' %}"><img src="../static/images/logo/logo.png" alt="logo"/></a></h1>
+        </div>
+        <div class="header-bottom">
+          <div class="container">
+            <div class="main-nav-wrapper">
+              <div class="header-left">
+                <nav id="primary-menu" class="main-nav">
+                  <ul class="nav">
+                    <li class="active menu-home"><a href="{% url 'main_page' %}">Главная</a>
+
+                    </li>
+                    <li class="menu-item menu-shop"><a href="{% url 'product_shop' %}">Магазин</a>
+                      <ul class="sub-menu">
+                        <li class="menu_style_dropdown menu-item">
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'product_shop' %}">Список товаров</a></li>
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'product_cart' %}">Корзина</a></li>
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'my_account' %}">Мой профиль</a></li>
+                            <li class="menu-item menu-item-object-page"><a href="{% url 'product_wishlist' %}">Список желаний</a></li>
+
+                        </li>
+                      </ul>
+                    </li>
+                    <li class=" menu-blog"><a href="{% url 'about_us' %}">О нас</a>
+                    </li>
+                    <li class="menu-blog"><a href="{% url 'contact_us' %}">Контакты</a>
+                    </li>
+
+                  </ul>
+                </nav>
+                <!-- .header-main-nav-->
+              </div>
+
+              <div class="header-right">
+                <div class="search-button-wrapper header-customize-item style-default">
+                  <div class="icon-search-menu"><i class="wicon fa fa-search"></i></div>
+                  <div class="yolo-search-wrapper">
+                    <input placeholder="Enter keyword to search" type="search"/>
+                    <button class="search"><i class="fa fa-search"></i></button>
+                    <button class="close"><i class="pe-7s-close"></i></button>
+                  </div>
+                </div>
+                <div class="shopping-cart-wrapper header-customize-item with-price">
+                  <div class="widget_shopping_cart_content">
+                    <div class="widget_shopping_cart_icon"><i class="wicon fa fa-shopping-bag"></i><span class="total">0</span></div>
+                    <div class="cart_list_wrapper">
+                      <div class="scroll-wrapper cart_list product_list_widget scrollbar-inner">
+                        <ul class="cart_list product_list_widget scrollbar-inner scroll-content">
+                          <li class="empty">
+                            <h4>Ваша корзина пуста</h4>
+                            <p>Для добавления товаров перейдите в каталог.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="header-customize-item canvas-menu-toggle-wrapper"></div>
+                <div class="canvas-menu-toggle"><i class="fa fa-align-right"></i></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <nav class="yolo-canvas-menu-wrapper dark ps-container"><a href="#" class="yolo-canvas-menu-close"><i class="fa fa-close"></i></a>
+          <div class="yolo-canvas-menu-inner sidebar">
+            <aside id="text-12" class="widget widget_text">
+              <div class="textwidget">
+                <div class="begreen-widget ad-spot text-center">
+                  <div class="about-image"><img src="images/demo/off-menu.png" alt="demo"/></div>
+                  <h2 class="name_author">Be Green</h2>
+                  <div class="about-description text-center">I love life and the unique position of being a working artist. I love the thrill of the hunt and am an avid vintage hound, sniffing out the best one-of-a-kinds.</div>
+                </div>
+              </div>
+            </aside>
+            <aside id="text-13" class="widget widget_text">
+              <div class="textwidget"><a href="#"><img src="images/demo/bn-bs.jpg" alt="demo"/></a></div>
+            </aside>
+            <aside id="yolo-social-profile-6" class="widget widget-social-profile">
+              <ul class="social-profile social-icon-bordered">
+                <li><a title="Facebook" href="#" target="_blank"><i class="fa fa-facebook"></i>Facebook</a></li>
+                <li><a title="Twitter" href="#" target="_blank"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a title="Skype" href="#" target="_blank"><i class="fa fa-skype"></i>Skype</a></li>
+                <li><a title="Youtube" href="#" target="_blank"><i class="fa fa-youtube"></i>Youtube</a></li>
+              </ul>
+            </aside>
+          </div>
+        </nav>
+      </header>
+      <div id="example-wrapper">
+        <div class="div-box">
+          <div class="banner-subpage">
+            <figure><img src="../static/images/background/bg-banner.jpg" alt="bg-banner"/></figure>
+            <div class="banner-subpage-content">
+              <h2>Магазин</h2>
+              <div class="desc">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div-box mb">
+          <div class="container">
+            <div data-js-module="filtering-demo" class="big-demo go-wide">
+              <div class="ul-list-shop mt">
+                <div class="filter-button-group button-group js-radio-button-group container">
+                  <button data-filter="*" class="button is-checked">Все</button>
+                  <button data-filter=".featured" class="button">Вилки</button>
+                  <button data-filter=".indoor" class="button">Стулья</button>
+                  <button data-filter=".new" class="button">Ложки</button>
+                  <button data-filter=".outdoor" class="button">Outdoor</button>
+                  <button data-filter=".pots" class="button">Pots</button>
+                  <button data-filter=".seeds" class="button">Seeds</button>
+                </div>
+                <ul class="sidebar-shop">
+                  <li class="click-toggle-sidebar-filter click-toggle-sidebar">Сортировка</li>
+                  <li class="click-toggle-sidebar-search click-toggle-sidebar">Поиск</li>
+                </ul>
+              </div>
+              <div class="sidebar-shop-search toggle-sidebar-shop mb-20 dib-none">
+                <form>
+                  <input type="text" placeholder="Поиск..."/><a href="#"><i class="fa fa-search"></i></a>
+                </form>
+              </div>
+              <div class="sidebar-shop-col toggle-sidebar-shop mb-20 dib-none">
+                <div class="sidebar-product-style-2">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <aside class="sort-by">
+                        <h4 class="mb-20">Сортировать по:</h4>
+                        <ul>
+                          <li>По умолчанию</li>
+                          <li><a href="#">Популярность</a></li>
+                          <li><a href="#">Рейтниг</a></li>
+                          <li><a href="#">Новизна</a></li>
+                          <li><a href="#">Цена: от низкой к высокой</a></li>
+                          <li><a href="#">Цена: от высокой к низкой</a></li>
+                        </ul>
+                      </aside>
+                    </div>
+                    <div class="col-md-3">
+                      <aside class="sort-by">
+                        <h4 class="mb-20">Сортировать по цене</h4>
+                        <ul class="categories">
+                          <li>Всё</li>
+                          <li><a href="#">$0.00 - $50.00</a></li>
+                          <li><a href="#">$50.00 - $100.00</a></li>
+                          <li><a href="#">$100.00 - $150.00</a></li>
+                          <li><a href="#">$150.00 - $200.00</a></li>
+                          <li><a href="#">$200.00 - $250.00</a></li>
+                          <li><a href="#">$250.00 - $300.00</a></li>
+                          <li><a href="#">$300.00 - $350.00</a></li>
+                          <li><a href="#">$350.00 - $400.00</a></li>
+                          <li><a href="#">$400.00+</a></li>
+                        </ul>
+                      </aside>
+                    </div>
+                    <div class="col-md-3">
+                      <aside class="categorie">
+                        <h4 class="mb-20">Категории</h4>
+                        <ul class="categories">
+                          <li><a href="#">Chair</a></li>
+                          <li><a href="#">Decoration</a></li>
+                          <li><a href="#">Essential</a></li>
+                          <li><a href="#">Lamp</a></li>
+                          <li><a href="#">Sofas</a></li>
+                        </ul>
+                      </aside>
+                    </div>
+                    <div class="col-md-3">
+                      <aside class="tagcloud">
+                        <h4 class="mb-20">Тэги</h4>
+                        <ul class="tagcloud">
+                          <li><a href="#">Bag</a></li>
+                          <li><a href="#">Comb</a></li>
+                          <li><a href="#">Chair</a></li>
+                          <li><a href="#">Classic</a></li>
+                          <li><a href="#">Desk</a></li>
+                          <li><a href="#">Gel</a></li>
+                          <li><a href="#">Lamp</a></li>
+                          <li><a href="#">Glass</a></li>
+                          <li><a href="#">Office</a></li>
+                          <li><a href="#">Table Tiles</a></li>
+                          <li><a href="#">Socks</a></li>
+                        </ul>
+                      </aside>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="grid shortcode-product-wrap product-begreen columns-3">
+                {% for item in items %}
+                <li data-category="outdoor" class="element-item product-item-wrap product-style_1 featured indoor new seeds">
+                  <div class="product-item-inner">
+                    <div class="product-thumb">
+                      <div class="product-flash-wrap"></div>
+                      <div class="product-thumb-primary"><img src="{{item.showup_image.url}}" alt="product1" width="375" height="450" class="attachment-shop_catalog size-shop_catalog wp-post-image"/></div><a href="{% url 'product_single' pk=item.article %}" class="product-link">
+                        <div class="product-hover-sign">
+                          <hr/>
+                          <hr/>
+                        </div></a>
+                      <div class="product-info">
+                        <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><a href="{% url 'product_single' pk=item.article %}">
+                          <h3>{{item.title}}</h3></a><span class="price"><span class="product-begreen-price-amount amount"><span class="product-begreen-price-currencysymbol"></span>{{item.price}}</span> р.</span>
+                      </div>
+                      <div class="product-actions">
+                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-17">
+                          <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
+                        </div>
+                        <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <p class="button-product text-center mt-20"><a class="btn btn-15">Load more</a></p>
+          </div>
+        </div>
+
+
+        <div class="div-box">
+          <footer id="yolo-footer-wrapper">
+            <div class="yolo-footer-wrapper footer-3">
+              <div class="footer-col">
+                <h2><a href="{% url 'main_page' %}" class="logo"><img src="../static/images/logo/logo-footer.png" alt="logo1" width="84" height="63" class="vc_single_image-img attachment-full"/></a></h2>
+                <ul id="social-footer">
+                  <li><a href="#" target="_blank"><i class="fa fa-skype"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+      </div>
+    </div>
+    <!-- .mv-site-->
+
+
+
+    <div class="popup-wrapper">
+    </div>
+    <!-- .popup-wrapper-->
+    <div class="click-back-top-body">
+      <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
+    </div>
+
+
+        <!-- Vendor jQuery-->
+        <script type="text/javascript" src="../static/libs/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/libs/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../static/libs/animate/wow.min.js"></script>
+        <script type="text/javascript" src="../static/libs/jquery.mmenu.all/jquery.mmenu.all.min.js"></script>
+        <script type="text/javascript" src="../static/libs/countdown/jquery.countdown.min.js"></script>
+        <script type="text/javascript" src="../static/libs/jquery-appear/jquery.appear.min.js"></script>
+        <script type="text/javascript" src="../static/libs/jquery-countto/jquery.countTo.min.js"></script>
+        <script type="text/javascript" src="../static/libs/direction/js/jquery.hoverdir.js"></script>
+        <script type="text/javascript" src="../static/libs/direction/js/modernizr.custom.97074.js"></script>
+        <script type="text/javascript" src="../static/libs/isotope/isotope.pkgd.min.js"></script>
+        <script type="text/javascript" src="../static/libs/isotope/fit-columns.js"></script>
+        <script type="text/javascript" src="../static/libs/isotope/isotope-docs.min.js"></script>
+        <script type="text/javascript" src="../static/libs/mansory/mansory.js"></script>
+        <script type="text/javascript" src="../static/libs/prettyphoto-master/js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="../static/libs/slick-sider/slick.min.js"></script>
+        <script type="text/javascript" src="../static/libs/countdown-timer/js/jquery.final-countdown.min.js"></script>
+        <script type="text/javascript" src="../static/libs/countdown-timer/js/kinetic.js"></script>
+        <script type="text/javascript" src="../static/libs/owl.carousel.min/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="../static/js/main.js"></script>
+  </body>
+</html>
