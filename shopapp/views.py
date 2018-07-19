@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 from .models import Product, ImageModel, Cart, ProductInCart
 
 def main_page(request):
-    items = Product.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')
+    items = Product.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:5]
 
     return render(request, 'index.html', {'items' : items})
 
@@ -60,19 +60,42 @@ def add_to_cart(request):
     if request.method == "POST":
         pk = request.POST.get('pk', None)
         count = request.POST.get('count', None)
-        product = get_object_or_404(Product, article=pk)
-        cart,created = Cart.objects.get_or_create(user = request.user)
+    elif request.method == "GET":
+        pk = request.GET.get('pk', None)
+        count = request.GET.get('count', None)
+    product = get_object_or_404(Product, article=pk)
+    cart,created = Cart.objects.get_or_create(user = request.user, status_code=0)
 
-        cartproduct = ProductInCart.objects.get_or_create(cart = cart, quanity = count, item=product)[0]
-        cartproduct.summary = float(cartproduct.summary) + float(count) * float(product.price)
-        cart.summary = float(cart.summary) + float(cartproduct.summary)
-        cart.save()
-        cartproduct.save()
-        response_data = {}
-        return HttpResponse(
-            json.dumps(response_data),
-            content_type="application/json",
-        )
+    cartproduct = ProductInCart.objects.get_or_create(cart = cart, quanity = count, item=product)[0]
+    cartproduct.summary = float(cartproduct.summary) + float(count) * float(product.price)
+    cart.summary = float(cart.summary) + float(cartproduct.summary)
+    cart.save()
+    cartproduct.save()
+    response_data = {}
+    return HttpResponse(
+        json.dumps(response_data),
+        content_type="application/json",
+    )
+
+@login_required
+def changing_quanity(request):
+    if request.method == "GET":
+        pk = request.GET.get('pk', None)
+        count = request.GET.get('count', None)
+    logger.error(pk)
+    product = get_object_or_404(Product, article=pk)
+    cart = Cart.objects.get_or_create(user = request.user, status_code=0)[0]
+    cartproduct = get_object_or_404(ProductInCart, cart = cart, item=product)
+    cart.summary = float(cart.summary) - float(cartproduct.summary)
+    cartproduct.summary = float(count) * float(product.price)
+    cart.summary = float(cart.summary) + float(cartproduct.summary)
+    cart.save()
+    cartproduct.save()
+    response_data = {}
+    return HttpResponse(
+        json.dumps(response_data),
+        content_type="application/json",
+    )
 
 @login_required
 def delete_from_cart(request):
@@ -80,10 +103,10 @@ def delete_from_cart(request):
     if request.method == "GET":
         art = request.GET.get('art', None)
         product = get_object_or_404(Product, article=art)
-        cart = get_object_or_404 (Cart, user = request.user)
+        cart = get_object_or_404 (Cart, user = request.user, status_code=0)
         cartproduct = get_object_or_404 (ProductInCart, cart = cart, item = product)
         cartproduct.delete()
-        cart.summary = float(cart.summary) - float(product.price) * float(cartproduct.count)
+        cart.summary = float(cart.summary) - float(product.price) * float(cartproduct.quanity)
         cart.save()
         response_data = {
         #Отправить сумму
@@ -96,7 +119,7 @@ def product_single(request, pk):
     item = get_object_or_404(Product, article=pk)
     images = ImageModel.objects.filter(item=item)
     user = request.user
-    cart = get_object_or_404(Cart, user=user).products.filter(item = item)
+    cart = get_object_or_404(Cart, user=user, status_code=0).products.filter(item = item)
     return render(request, 'product-single.html', {'item' : item, 'images' : images, 'item_already_in_cart': cart})
 
 def product_shop(request):

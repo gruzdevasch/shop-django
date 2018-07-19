@@ -47,6 +47,23 @@
           }
         });
       });
+      $('.quanityinput').on("change", function(){
+        var art;
+        art = $(this).attr("item");
+        var count = $(this).val();
+        console.log(count);
+        $.ajax({
+          type: "GET",
+          url: "{% url 'changing_quanity' %}",
+          data: {
+            'pk': art,
+            'count': count
+          },
+          dataType: 'json',
+          success: function (data) {
+          }
+        });
+      });
     });
     </script>
   </head>
@@ -227,11 +244,11 @@
                 </tr>
                 {% for items in cart %}
                 <tr id="item{{items.item.article}}">
-                  <td data-title="Фото"><a href="{% url 'product_single' pk=items.item.article %}" class="image-product"><img src="{{items.item.showup_image.url}}" alt="tab-1" width="180" height="220"/></a></td>
+                  <td data-title="Фото"><a href="{% url 'product_single' pk=items.item.article %}" class="image-product"><img src="{{items.item.showup_image.url}}"  alt="tab-1" width="180" height="220"/></a></td>
                   <td data-title="Наименование"><a href="{% url 'product_single' pk=items.item.article %}" class="name-product">{{items.item.title}} </a></td>
                   <td data-title="Цена"><span class="price">{{items.item.price}}</span></td>
                   <td data-title="Количество"><span class="quanlity"></span>
-                    <input type="number" value="{{items.quanity}}" min="1"/>
+                    <input type="number" class="quanityinput" id="value{{items.item.article}}" item="{{items.item.article}}" value="{{items.quanity}}" min="1"/>
                   </td>
                   <td data-title="Итог"><span class="total">{{items.summary}}</span></td>
                   <td data-title="Удалить">

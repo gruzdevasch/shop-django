@@ -28,7 +28,7 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     showup_image = models.ImageField(upload_to='media/', null = True)
-
+    tech_data = models.TextField(null = True)
     cropping = ImageRatioField('showup_image', '430x360')
     price = models.FloatField()
     count = models.IntegerField()

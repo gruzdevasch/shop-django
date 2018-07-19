@@ -14111,7 +14111,7 @@ header.header.menu-fixed.yolo-header-style-10 .header-right {
 }
 .yolo-header-top .header-customize-right .header-customize-item {
   display: inline-block;
-  margin-top: 1%;
+  margin-top: 20px;
   margin-left: 15px;
 }
 .yolo-header-top .header-customize-right .header-customize-item i {

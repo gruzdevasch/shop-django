@@ -25,10 +25,33 @@
     <link rel="stylesheet" type="text/css" href="./static/libs/slick-sider/slick.min.css">
     <link rel="stylesheet" type="text/css" href="./static/libs/countdown-timer/css/demo.css">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Template CSS-->
     <link rel="stylesheet" type="text/css" href="./static/css/main.css">
     <link rel="stylesheet" type="text/css" href="./static/css/home.css">
-
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.main_add_to_cart_button').on("click", function(){
+        var art;
+        art = $(this).attr("item");
+        var count = 1;
+        console.log(art);
+        $.ajax({
+          type: "GET",
+          url: "{% url 'add_to_cart' %}",
+          data: {
+            'pk': art,
+            'count': count
+          },
+          dataType: 'json',
+          success: function (data) {
+             $('#carticon'+art).toggleClass("fa-cart-plus fa-trash");
+          }
+        });
+      });
+    });
+    </script>
 
   </head>
   <body class="home main-home">
@@ -236,132 +259,34 @@
               <div class="home-1-banner-content">
                 <div class="row">
                   <div class="col-md-4 col-sm-4">
-                    <div class="product-item-wrap product-style_1">
-                      <div class="product-item-inner">
-                        <div class="product-thumb">
-                          <div class="product-flash-wrap"><span class="on-new product-flash" style="font-size:14px;">Новинка</span></div>
-                          <div class="product-thumb-primary"><img src="{{items.0.showup_image.url}}" alt="product1" width="375" height="450" class="attachment-shop_catalog size-shop_catalog wp-post-image"/></div><a href="{% url 'product_single' pk=items.0.article %}" class="product-link">
-                            <div class="product-hover-sign">
-                              <hr/>
-                              <hr/>
-                            </div></a>
-                          <div class="product-info">
-                            <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="product-begreen-price-amount amount"><span class="product-begreen-price-currencysymbol"></span>{{items.0.price}}</span>руб.</span><a href="#">
-                              <h3>{{items.0.title}}</h3></a>
-                          </div>
-                          <div class="product-actions">
-                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-17">
-                              <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                            </div>
-                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-sm-4">
                     <div class="home-1-banner-content-diffirent">
                       <h2 class="title-style title-style-1"><span class="title-left">Новые </span><span class="title-right">поступления</span></h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisc elit Nam mattis sapien a ipsum dapibus Ut nec massa <br/> dui maecenas vel justo ipsum <br/> tincidunt tempor.</p>
+                      <p>Посмотрите на новейшиие поступления  <br/> от наших поставщиков. <br/> Будьте первыми.</p>
 
                     </div>
                   </div>
+
+                  {% for item in items %}
                   <div class="col-md-4 col-sm-4">
                     <div class="product-item-wrap product-style_1">
                       <div class="product-item-inner">
                         <div class="product-thumb">
                           <div class="product-flash-wrap"><span class="on-new product-flash" style="font-size:14px;">Новинка</span></div>
-                          <div class="product-thumb-primary"><img src="{{items.0.showup_image.url}}" alt="product1" width="375" height="450" class="attachment-shop_catalog size-shop_catalog wp-post-image"/></div><a href="#" class="product-link">
+                          <div class="product-thumb-primary"><img style="height:375;" src="{{item.showup_image.url}}" alt="product1" width="375" class="attachment-shop_catalog size-shop_catalog wp-post-image"/></div><a href="{% url 'product_single' pk=item.article %}" class="product-link">
                             <div class="product-hover-sign">
                               <hr/>
                               <hr/>
                             </div></a>
                           <div class="product-info">
-                            <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="product-begreen-price-amount amount"><span class="product-begreen-price-currencysymbol"></span>{{items.0.price}}</span>руб.</span><a href="#">
-                              <h3>{{items.0.title}}</h3></a>
+                            <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="product-begreen-price-amount amount"><span class="product-begreen-price-currencysymbol"></span>{{item.price}}</span>₽</span><a href="{% url 'product_single' pk=item.article %}">
+                              <h3>{{item.title}}</h3></a>
                           </div>
-                          <div class="product-actions">
-                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-17">
-                              <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                            </div>
-                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                          </div>
+
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-4 col-sm-4">
-                    <div class="product-item-wrap product-style_1">
-                      <div class="product-item-inner">
-                        <div class="product-thumb">
-                          <div class="product-flash-wrap"><span class="on-new product-flash" style="font-size:14px;">Новинка</span></div>
-                          <div class="product-thumb-primary"><img src="{{items.0.showup_image.url}}" alt="product1" width="375" height="450" class="attachment-shop_catalog size-shop_catalog wp-post-image"/></div><a href="#" class="product-link">
-                            <div class="product-hover-sign">
-                              <hr/>
-                              <hr/>
-                            </div></a>
-                          <div class="product-info">
-                            <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="product-begreen-price-amount amount"><span class="product-begreen-price-currencysymbol"></span>{{items.0.price}}</span>руб.</span><a href="#">
-                              <h3>{{items.0.title}}</h3></a>
-                          </div>
-                          <div class="product-actions">
-                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-17">
-                              <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                            </div>
-                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-sm-4">
-                    <div class="product-item-wrap product-style_1">
-                      <div class="product-item-inner">
-                        <div class="product-thumb">
-                          <div class="product-flash-wrap"><span class="on-new product-flash" style="font-size:14px;">Новинка</span></div>
-                          <div class="product-thumb-primary"><img src="{{items.0.showup_image.url}}" alt="product1" width="375" height="450" class="attachment-shop_catalog size-shop_catalog wp-post-image"/></div><a href="#" class="product-link">
-                            <div class="product-hover-sign">
-                              <hr/>
-                              <hr/>
-                            </div></a>
-                          <div class="product-info">
-                            <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="product-begreen-price-amount amount"><span class="product-begreen-price-currencysymbol"></span>{{items.0.price}}</span>руб.</span><a href="#">
-                              <h3>{{items.0.title}}</h3></a>
-                          </div>
-                          <div class="product-actions">
-                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-17">
-                              <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                            </div>
-                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-sm-4">
-                    <div class="product-item-wrap product-style_1">
-                      <div class="product-item-inner">
-                        <div class="product-thumb">
-                          <div class="product-flash-wrap"><span class="on-new product-flash" style="font-size:14px;">Новинка</span></div>
-                          <div class="product-thumb-primary"><img src="{{items.0.showup_image.url}}" alt="product1" width="375" height="450" class="attachment-shop_catalog size-shop_catalog wp-post-image"/></div><a href="#" class="product-link">
-                            <div class="product-hover-sign">
-                              <hr/>
-                              <hr/>
-                            </div></a>
-                          <div class="product-info">
-                            <div class="star-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="product-begreen-price-amount amount"><span class="product-begreen-price-currencysymbol"></span>{{items.0.price}}</span>руб.</span><a href="#">
-                              <h3>{{items.0.title}}</h3></a>
-                          </div>
-                          <div class="product-actions">
-                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-17">
-                              <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                            </div>
-                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>

@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^add_to_cart/$', views.add_to_cart, name='add_to_cart'),
     url(r'^delete_from_cart/$', views.delete_from_cart, name='delete_from_cart'),
+    url(r'^changing_quanity/$', views.changing_quanity, name='changing_quanity'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate, name='activate'),
 ]
